@@ -33,7 +33,10 @@ public class Player : Character
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SpawnBullet();
+            GameObject bullet = Pooler.instance.Spawn("Bullet", BulletSpawnPosition.position);
+            float fuerza = GetComponent<Player>().ShootForce;
+            bullet.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            bullet.GetComponent<Rigidbody>().AddForce(transform.forward * fuerza , ForceMode.Impulse);
         }
     }
 }

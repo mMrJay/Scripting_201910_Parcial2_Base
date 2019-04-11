@@ -1,7 +1,18 @@
-﻿public class FleeFromPlayer : Task
+﻿using UnityEngine;
+
+public class FleeFromPlayer : Task
 {
+    [SerializeField]
+    private float speed;
+
     public override bool Execute()
     {
-        throw new System.NotImplementedException();
+        Vector3 playerPos = GameObject.Find("Player").transform.position;
+
+        transform.LookAt(playerPos);
+        
+        transform.position += transform.forward * Time.deltaTime * speed *-1;
+
+        return true;
     }
 }

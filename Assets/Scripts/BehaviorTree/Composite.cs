@@ -3,7 +3,7 @@
 public abstract class Composite : RootChild
 {
     [SerializeField]
-    private RootChild[] children;
+    protected RootChild[] children;
 
     public override void SetTargetAI(GameObject target)
     {
@@ -20,7 +20,6 @@ public abstract class Composite : RootChild
     public override bool Execute()
     {
         bool result = ValueToBreak;
-
         foreach (Node node in children)
         {
             result = node.Execute();
@@ -31,8 +30,7 @@ public abstract class Composite : RootChild
             }
         }
 
-        print(string.Format("Result for {0} : {1}", GetType().ToString(), result));
-
+        //print(string.Format("Result for {0} : {1}", GetType().ToString(), result));
         return result;
     }
 }

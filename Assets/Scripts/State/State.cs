@@ -5,14 +5,21 @@ public abstract class State : MonoBehaviour
     [SerializeField]
     private State nextState;
 
+    [SerializeField]
+    private AICharacter yo;
+
+    public State NextState { get => nextState; set => nextState = value; }
+    public AICharacter Yo { get => yo;}
+
     public abstract void Execute();
 
-    private void SwitchToNextState()
+    /*
+    protected void SwitchToNextState()
     {
-        if (nextState != null)
+        if (NextState != null)
         {
             Toggle(false);
-            nextState.Toggle(true);
+            NextState.Toggle(true);
         }
     }
 
@@ -24,5 +31,14 @@ public abstract class State : MonoBehaviour
         {
             Execute();
         }
+    }
+    */
+    // Verificar distancia entre el jugador y yo.
+    public float CheckDistanceToPlayer()
+    {
+        Vector3 playerPos = GameObject.Find("Player").transform.position;
+        float distance = Vector3.Distance(playerPos, transform.position);
+
+        return distance;
     }
 }

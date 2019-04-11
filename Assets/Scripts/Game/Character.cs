@@ -8,7 +8,7 @@ public abstract class Character : MonoBehaviour
     private float maxHP;
 
     [SerializeField]
-    private Bullet bullet;
+    private EnemyBullet eBullet;
 
     [SerializeField]
     private float shootForce = 20F;
@@ -16,6 +16,7 @@ public abstract class Character : MonoBehaviour
     [SerializeField]
     private Transform bulletSpawnPosition;
 
+    [SerializeField]
     private float hp;
 
     public float HP
@@ -25,6 +26,8 @@ public abstract class Character : MonoBehaviour
     }
 
     public float ShootForce { get { return shootForce; } }
+
+    public Transform BulletSpawnPosition { get => bulletSpawnPosition; set => bulletSpawnPosition = value; }
 
     public void ModifyHP(float delta)
     {
@@ -38,7 +41,8 @@ public abstract class Character : MonoBehaviour
 
     protected virtual void OnDeath()
     {
-        Destroy(gameObject);
+        Pooler.instance.PutAway(gameObject);
+        Pooler.instance.EnemiesDown++;
     }
 
     // Start is called before the first frame update
@@ -46,12 +50,12 @@ public abstract class Character : MonoBehaviour
     {
         HP = maxHP;
     }
-
-    protected void SpawnBullet()
+    /*
+    public void SpawnBullet()
     {
-        if (bullet != null && bulletSpawnPosition != null)
+        if (eBullet != null && BulletSpawnPosition != null)
         {
-            Instantiate<Bullet>(bullet, bulletSpawnPosition.position, transform.rotation).Shoot(this);
+            Instantiate<Bullet>(eBullet, BulletSpawnPosition.position, transform.rotation).Shoot(this);
         }
-    }
+    }*/
 }

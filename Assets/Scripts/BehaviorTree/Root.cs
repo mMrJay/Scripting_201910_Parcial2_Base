@@ -13,7 +13,6 @@ public class Root : Node
         {
             result = child.Execute();
         }
-
         return result;
     }
 }

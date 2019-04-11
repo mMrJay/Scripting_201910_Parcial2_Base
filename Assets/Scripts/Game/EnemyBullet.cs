@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class Bullet : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
     [SerializeField]
     private float damage = 10F;
@@ -40,7 +40,7 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Character"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             Character character = collision.gameObject.GetComponent<Character>();
 
@@ -49,5 +49,12 @@ public class Bullet : MonoBehaviour
                 character.ModifyHP(damage * -1);
             }
         }
+
+        if (collision.gameObject.Equals(instigator.gameObject))
+        {
+            Pooler.instance.PutAway(gameObject);
+        }
     }
+
+
 }
