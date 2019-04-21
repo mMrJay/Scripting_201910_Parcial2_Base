@@ -1,0 +1,11 @@
+feedback
+
+Componente Práctico (4.7/ 5.0)
+* Las balas se almacenan correctamente en un pool y se reusan según necesitan los actores (0.4 / 0.4)
+* Los nodos del BT solicitados están implementados y funcionan debidamente. Hubiera sido ideal asignar diferentes colores a los AI para identificar visualmente cuál es cuál, pero esto no era requisito (1.5 / 1.5)
+* Los estados pedidos están implementados según la restricción de las distancias (1.0 / 1.0)
+* El pool que maneja a los enemigos no los restablece en todos los casos. Solo pude ver que los enemigos se restablecieran después de matar una primera ola. Después de esto, los enemigos no volvieron a aparecer (0.4/ 0.7)
+* Las instancias de enemigos son manejadas por pool (0.4 / 0.4)
+* El readme justifica apropiadamente la elección de patrones para la implementación (1.0 / 1.0)
+
+Total: 4.7 / 5.0
